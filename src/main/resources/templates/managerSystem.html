@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理员中心</title>
+    <link rel="shortcut icon" href="/img/icon.png" />
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <script src="/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="/css/manager.css">
+</head>
+
+<body>
+    <div>
+        <header class="container-fluid">
+            <div class="pull-left">
+                <h1>管理员中心</h1>
+            </div>
+            <div class="pull-right">
+                <img src="/img/admin.jpg" alt="admin">
+                <span>Hello</span>
+                <span>Admin</span>
+                <span>|</span>
+                <span><a href="/logout">logout</a></span>
+            </div>
+        </header>
+        <div class="main">
+            <div class="asideBar pull-left">
+                <ul>
+                    <li><span class="glyphicon glyphicon-send" aria-hidden="true"></span>员工信息表</li>
+                    <li class="focus"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>考勤情况</li>
+                    <li><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>请假申请</li>
+                </ul>
+            </div>
+            <div class="blank"></div>
+            <div class="mainMsg box pull-left">
+                <h2>员工信息表</h2>
+                <div class="staffMsg">
+                    <div class="timeTable">
+                        <div class="search pull-left">
+                            <label for="searchName">姓名：</label>
+                            <input type="text" id="searchName" name="searchName">
+                            <a class="searchBtn" href="javascript:;"><img src="/img/search.ico" alt="search"></a>
+                        </div>
+                        <div class="pull-right">
+                            <div class="pull-left yearAndMonth">
+                                <input type="button" class="btn btn-primary year" value="">
+                                <input type="button" class="btn btn-primary month" value="">
+                                <input type="button" class="btn btn-primary day" value="">
+                                <span class="week text-primary"></span>
+                            </div>
+                            <div class="pull-right time">
+                                <div>
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                </div>
+                                <span>:</span>
+                                <div>
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                </div>
+                                <span>:</span>
+                                <div>
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                    <img class="num num0" src="/img/time.png" alt="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <form id="addForm">
+                            <div>
+                                <label for="staffName">姓名：</label>
+                                <input type="text" name="staffName" id="staffName" required>
+                            </div>
+                            <div>
+                                <label for="staffDate">入职日期：</label>
+                                <input type="text" name="staffDate" id="staffDate" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="add">添加</button>
+                        </form>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <th>编号</th>
+                            <th>姓名</th>
+                            <th>入职日期</th>
+                            <th>编辑</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>tianyu</td>
+                                <td>2017-11-07</td>
+                                <td><a class="deleteStaff" href="#">删除</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mainMsg pull-left">
+                <div class="box">
+                    <h2>员工考勤情况</h2>
+                    <form class="tableSearch container-fulid">
+                        <span>年份：</span>
+                        <select class="selectYear form-control pull-left col-2">
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                          </select>
+                        <span>月份：</span>
+                        <select class="selectMonth form-control pull-left col-2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                          </select>
+                        <button type="button" id="searchBtn" class="btn btn-primary">查询</button>
+                    </form>
+                    <div id="timeAttendance">
+
+                    </div>
+                </div>
+                <div class="box">
+                    <h2>查询员工请假详情</h2>
+                    <form class="moreMsg">
+                        <!-- <label for="search">姓名：</label> -->
+                        <input type="text" id="search" name="search" placeholder="姓名">
+                        <a class="btn searchMore" href="javascript:;"><img src="/img/search.ico" alt="search"></a>
+                    </form>
+                    <div class="leaves clearfix">
+                        <!--<div class="leave pull-left">-->
+                        <!--<p><strong>tianyu</strong></p>-->
+                        <!--<p>-->
+                        <!--<span>编号:</span>-->
+                        <!--<span>001</span>-->
+                        <!--</p>-->
+                        <!--<p>-->
+                        <!--<span>出勤天数:</span>-->
+                        <!--<span>30天</span>-->
+                        <!--</p>-->
+                        <!--<p>-->
+                        <!--<span>请假天数：</span>-->
+                        <!--<span>2天</span>-->
+                        <!--</p>-->
+                        <!--<p>-->
+                        <!--<span>请假日期：</span>-->
+                        <!--<span>2018-1-1 2018-1-1 2018-1-1 2018-1-1 2018-1-1 2018-1-1</span>-->
+                        <!--</p>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="mainMsg pull-left">
+                <div class="box">
+                    <h2>请假申请批复</h2>
+                    <div class="emailCheck">
+                        <div class="emailList">
+                            <div class="sender col-12">
+                                <span>申请人：</span>
+                                <span><strong>tianyu</strong></span>
+                            </div>
+                            <div class="emailBox">
+                                <div class="contentBox">
+                                    <span>申请天数：</span>
+                                    <span><strong>3</strong>天</span>
+                                    <div>
+                                        <span>申请日期：</span>
+                                        <span>2018-1-1 2018-2-1</span>
+                                    </div>
+                                    <span>内容：</span>
+                                    <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+                                </div>
+                                <div class="checkBox">
+                                    <a href="#"><span class="glyphicon glyphicon-ok"></span></a>
+                                    <span>|</span>
+                                    <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/main.js "></script>
+    <script src="/js/manager.js "></script>
+</body>
+
+</html>

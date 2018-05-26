@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>员工考勤管理系统</title>
+    <link rel="shortcut icon" href="/img/icon.png" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-md-5 col-center-block">
+                <form class="middle" action="/login" method="POST">
+                    <h2>Login</h2>
+                    <label for="username" class="sr-only">用户名</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
+                    <label for="password" class="sr-only">密码</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="密码" required>
+                    <div class="checkbox">
+                        <label>
+                        <input class="remember-me" name="remember-me" type="checkbox" value="remember-me">
+                    记住我</label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录个人管理中心</button>
+                    <p th:if="${param.error}" class="bg-danger text-center">有错误，请重试</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/canvas.js"></script>
+<script>
+    function setCookie(name, value, day) {
+        var date = new Date();
+        date.setDate(date.getDate() + day);
+        document.cookie = name + '=' + value + ';expires' + date;
+    }
+    //获取cookie
+    function getCookie(name) {
+        var arr = document.cookie.split(';');
+        for (var i = 0; i < arr.length; i++) {
+            var arr2 = arr[i].split('=');
+            if (arr2[0] == name) {
+                return arr2[1];
+            }
+        }
+        return '';
+    }
+    //删除cookie
+    function delCookie(name) {
+        setCookie(name, null, -1);
+    }
+    var rememberMe = document.querySelector(".remember-me");
+    var oForm = this.document.querySelector("form");
+    var oUser = document.querySelector('#username');
+    var oPassword = this.document.querySelector('#password');
+    oForm.onsubmit = function() {
+        if (rememberMe.checked) {
+            setCookie('user', oUser.value, 7);
+            setCookie('password', oPassword.value, 7)
+        }
+    }
+    rememberMe.onchange = function() {
+        if (!this.checked) {
+            delCookie('user');
+            delCookie('password')
+        }
+    }
+    if (getCookie('user') && getCookie('password')) {
+        oUser.value = getCookie('user');
+        oPassword.value = getCookie('password');
+        rememberMe.checked = true;
+    }
+    rememberMe.onchange = function() {
+        if (!this.checked) {
+            delCookie('user');
+            delCookie('password');
+        }
+    }
+</script>
+
+</html>

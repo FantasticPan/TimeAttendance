@@ -1,0 +1,59 @@
+html,
+body,
+form,
+fieldset,
+legend,
+p,
+label,
+input,
+div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(195, 199, 230);
+    overflow: hidden;
+}
+
+#canvas {
+    position: absolute;
+    z-index: -1
+}
+
+.container {
+    position: relative;
+}
+
+form {
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgb(194, 196, 219);
+    background: rgba(174, 176, 201, 0.39);
+    padding: 0 20px 20px 20px;
+    margin-top: 11rem;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(41, 104, 199);
+}
+
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.bg-danger {
+    padding: 10px;
+    /* position: relative;
+    top: 100px; */
+    margin-top: 20px;
+    border-radius: 5px;
+}

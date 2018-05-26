@@ -1,0 +1,328 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0e3f5c;
+    padding: 0 60px;
+    min-width: 1340px;
+}
+
+header {
+    position: relative;
+    background: #0a3046;
+}
+
+h1 {
+    font-size: 30px;
+    color: #d1dce2;
+}
+
+header .pull-right {
+    color: aliceblue;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+header a {
+    color: aliceblue;
+}
+
+header a:hover {
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+.asideBar {
+    background: #d1dce2;
+    width: 200px;
+    height: 620px;
+    padding: 0;
+}
+
+.asideBar ul li {
+    background: rgb(231, 236, 236);
+    padding-left: 40px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    list-style: none;
+    border-bottom: 1px solid #c4c6c9d5;
+    cursor: pointer;
+}
+
+.asideBar ul li:hover {
+    background: rgb(240, 240, 240);
+}
+
+.focus {
+    background: rgb(240, 240, 240) ! important;
+}
+
+.asideBar ul li span {
+    margin-right: 10px;
+}
+
+.asideBar .badge {
+    margin-left: 5px;
+    background: cornflowerblue;
+}
+
+.asideBar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.mainMsg {
+    display: none;
+    width: 80%;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.box {
+    margin-bottom: 20px;
+    background: rgb(243, 241, 241);
+    border-radius: 5px 5px 0 0;
+}
+
+.box h2 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 20px;
+    width: 100%;
+    color: rgb(24, 59, 124);
+    background: #d1dce2;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px 5px 0 0;
+}
+
+
+/* 员工信息表 */
+
+.staffMsg {
+    padding: 20px 20px;
+}
+
+.timeTable {
+    margin-bottom: 50px;
+}
+
+.search {
+    padding: 2px 0 2px 5px;
+    width: 50%;
+    margin: 10px 0;
+}
+
+.search img {
+    width: 30px;
+}
+
+.search input {
+    color: black;
+    height: 30px;
+    width: 60%;
+    border-radius: 0;
+}
+
+.time {
+    margin-top: 5px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+.time span {
+    font-size: 20px;
+    color: rgb(43, 120, 221);
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+    margin: 0 2px;
+}
+
+.yearAndMonth {
+    margin-top: 10px;
+}
+
+.week {
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.num {
+    /* width: 40px;
+    height: 40px; */
+    object-fit: none;
+    object-position: 0 0;
+    -webkit-transition: object-position .25s;
+    transition: object-position .25s;
+}
+
+.num0 {}
+
+.num1 {
+    object-position: 0 -41px;
+}
+
+.num2 {
+    object-position: 0 -80px;
+}
+
+.num3 {
+    object-position: 0 -120px;
+}
+
+.num4 {
+    object-position: 0 -160px;
+}
+
+.num5 {
+    object-position: 0 -200px;
+}
+
+.num6 {
+    object-position: 0 -240px;
+}
+
+.num7 {
+    object-position: 0 -280px;
+}
+
+.num8 {
+    object-position: 0 -320px;
+}
+
+.num9 {
+    object-position: 0 -360px;
+}
+
+table {
+    background: rgb(230, 228, 228);
+}
+
+form {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.deleteStaff {
+    color: red;
+}
+
+.tableSearch {
+    width: 400px;
+    margin-left: 20px;
+}
+
+.tableSearch select {
+    margin-right: 10px;
+}
+
+#timeAttendance {
+    margin: 20px 0 0 20px;
+    width: 800px;
+    height: 500px;
+}
+
+.moreMsg {
+    position: relative;
+}
+
+#search {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 20px;
+    padding: 3px;
+    margin-left: 30px;
+}
+
+.moreMsg img {
+    width: 40px;
+    position: absolute;
+    left: 350px;
+    top: 0;
+}
+
+.box .leaves {
+    width: 100%;
+    padding: 20px;
+}
+
+.leaves .leave {
+    width: 400px;
+    height: 200px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0 10px #c8c8c8 inset;
+    -moz-box-shadow: 0px 0 10px #c8c8c8 inset;
+    box-shadow: 0px 0 10px #c8c8c8 inset;
+}
+
+.leave p {
+    width: 100%;
+    text-align: center;
+    color: rgba(51, 54, 54, 0.774);
+}
+
+.leave:nth-of-type(odd) {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.leave:nth-of-type(even) {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.emailCheck {
+    padding: 20px;
+}
+
+.emailList {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed rgb(34, 46, 82);
+    overflow: hidden;
+}
+
+.emailList p {
+    text-indent: 2em;
+}
+
+.contentBox {
+    width: 60%;
+    float: left;
+}
+
+.checkBox {
+    font-size: 25px;
+    float: right;
+}
+
+.glyphicon-remove {
+    color: red;
+}
+
+.eamilNav {
+    background: #5b6d88d5;
+}

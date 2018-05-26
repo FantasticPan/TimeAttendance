@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attendance.mapper.VocationMapper">
+    <resultMap id="vocation" type="Vocation">
+        <id property="id" column="id"/>
+        <result property="applicant" column="applicant"/>
+        <result property="admin" column="admin"/>
+        <result property="date" column="date"/>
+        <result property="time" column="time"/>
+        <result property="leave_days" column="leave_days"/>
+        <result property="leave_date" column="leave_date"/>
+        <result property="leave_reason" column="leave_reason"/>
+        <result property="all_content" column="all_content"/>
+        <result property="read_state" column="read_state"/>
+    </resultMap>
+
+    <insert id="addVocation" parameterType="vocation">
+        INSERT INTO
+        vocation(applicant,admin,date,time,leave_days,leave_date,leave_reason)
+        VALUES
+        (#{applicant},#{admin},#{date},#{time},#{leave_days},#{leave_date},#{leave_reason})
+    </insert>
+
+    <select id="getVocationNumByApplicant" parameterType="String" resultType="Long">
+        SELECT
+        count(*)
+        FROM
+        vocation
+        WHERE
+        applicant = #{applicant_name}
+    </select>
+
+    <select id="getAllVocationByApplicant" parameterType="String" resultType="vocation">
+        SELECT
+        id,applicant,admin,date,time,leave_days,leave_date,leave_reason,all_content,read_state
+        FROM
+        vocation
+        WHERE
+        applicant = #{applicant_name} AND all_content IS NOT NULL
+    </select>
+
+    <select id="getAllVocationByAdmin" parameterType="String" resultType="vocation">
+        SELECT
+        id,applicant,admin,date,time,leave_days,leave_date,leave_reason,all_content,read_state
+        FROM
+        vocation
+        WHERE
+        admin = #{admin_name}
+    </select>
+
+    <update id="vocationReadState" parameterType="Integer">
+        UPDATE
+        vocation
+        SET
+        read_state="isRead"
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteVocation" parameterType="Integer">
+        DELETE FROM
+        vocation
+        WHERE
+        id = #{id}
+    </delete>
+
+    <select id="getWorkDayByDate" resultType="Integer">
+        SELECT
+        sum(leave_days)
+        FROM
+        vocation
+        WHERE
+        applicant = #{arg0} AND date &gt; #{arg1} AND date &lt; #{arg2} AND all_content IS NOT NULL
+    </select>
+
+    <select id="getVocationNameByDate" resultType="String">
+        SELECT
+        applicant
+        FROM
+        vocation
+        WHERE
+        date &gt; #{arg0} AND date &lt; #{arg1}
+    </select>
+
+    <select id="getLeaveDateByName" resultType="String">
+        SELECT
+        leave_date
+        FROM
+        vocation
+        WHERE
+        applicant = #{arg0} AND all_content IS NOT NULL
+    </select>
+
+    <update id="handleVocation">
+        UPDATE
+        vocation
+        SET
+        all_content=#{arg1}
+        WHERE
+        id = #{arg0}
+    </update>
+
+    <select id="getVocationByContent" resultMap="vocation">
+        SELECT
+        id,applicant,admin,date,time,leave_days,leave_date,leave_reason,all_content,read_state
+        FROM
+        vocation
+        WHERE
+        id = #{id} AND all_content IS NOT NULL
+    </select>
+</mapper>

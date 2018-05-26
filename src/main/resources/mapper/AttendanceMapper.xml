@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attendance.mapper.AttendanceMapper">
+    <resultMap id="attendance" type="Attendance">
+        <id property="id" column="id"/>
+        <result property="staffName" column="staff_name"/>
+        <result property="inTime" column="in_time"/>
+        <result property="outTime" column="out_time"/>
+        <result property="totalMilli" column="total_milli"/>
+    </resultMap>
+
+    <insert id="addAttendanceInTime" parameterType="Attendance">
+        INSERT INTO
+        attendance(staff_name,in_time)
+        VALUES
+        (#{staffName},#{inTime})
+    </insert>
+
+    <update id="addAttendanceOutTime" parameterType="Attendance">
+        UPDATE
+        attendance
+        SET
+        out_time = #{inTime}
+        WHERE
+        staff_name = #{staffName} AND in_time IS NOT NULL AND out_time IS NULL
+    </update>
+
+    <select id="getAttendanceByNameAndDate" resultMap="attendance">
+        SELECT
+        id, staff_name, in_time, out_time, total_milli
+        FROM
+        attendance
+        WHERE
+        staff_name = #{arg0} AND out_time IS NOT NULL AND in_time &gt; #{arg1} AND out_time &lt; #{arg2}
+    </select>
+
+    <select id="getAttendance" resultMap="attendance">
+        SELECT
+        id, staff_name, in_time, out_time, total_milli
+        FROM
+        attendance
+        WHERE
+        staff_name = #{staffName} AND in_time IS NOT NULL AND out_time IS NULL
+    </select>
+
+    <update id="updateAttendanceTotalMilli" parameterType="Attendance">
+        UPDATE
+        attendance
+        SET
+        total_milli = #{totalMilli}
+        WHERE
+        staff_name = #{staffName} AND in_time IS NOT NULL AND out_time IS NOT NULL AND total_milli IS NULL
+    </update>
+</mapper>
