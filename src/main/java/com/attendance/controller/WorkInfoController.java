@@ -30,6 +30,9 @@ public class WorkInfoController {
     @Autowired
     private WorkInfoService workInfoService;
 
+    /**
+     * 员工每月工作情况，以条形图呈现
+     */
     @PostMapping("/work_info")
     public List<WorkInfo> work_info(HttpServletRequest request) throws ParseException {
         Calendar calendar = Calendar.getInstance();

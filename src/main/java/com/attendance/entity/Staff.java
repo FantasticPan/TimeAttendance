@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * 角色表
  * Created by FantasticPan on 2018/3/23.
  */
 @Getter

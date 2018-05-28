@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
+ * 工作考勤表
  * Created by FantasticPan on 2018/3/31.
  */
 @Data

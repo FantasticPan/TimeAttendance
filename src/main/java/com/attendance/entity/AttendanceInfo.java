@@ -3,6 +3,7 @@ package com.attendance.entity;
 import lombok.Data;
 
 /**
+ * 信息转换类
  * Created by FantasticPan on 2018/4/13.
  */
 @Data

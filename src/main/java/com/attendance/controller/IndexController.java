@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
+    /**
+     * 登录成功跳转请求
+     */
     @RequestMapping("/personal_center")
     public String login(HttpServletRequest request) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

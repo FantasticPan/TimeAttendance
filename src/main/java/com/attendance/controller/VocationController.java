@@ -27,6 +27,9 @@ public class VocationController {
     @Autowired
     private StaffRepository staffRepository;
 
+    /**
+     * 员工接收请假回执
+     */
     @PostMapping("/vocation")
     public String leave(Vocation vocation_local) {
         List<String> roleList = staffRepository.findByRole("ROLE_ADMIN");
@@ -48,6 +51,9 @@ public class VocationController {
         return vocationService.getAllVocationByApplicant(applicant_name);
     }
 
+    /**
+     * 管理员接收请假
+     */
     @ResponseBody
     @PostMapping("/vocations_admin")
     public List<Vocation> vocationListAdmin() {
@@ -55,6 +61,9 @@ public class VocationController {
         return vocationService.getAllVocationByAdmin(admin);
     }
 
+    /**
+     * 更改信息读状态
+     */
     @ResponseBody
     @PostMapping("/read_state")
     public void vocationState(HttpServletRequest request) {

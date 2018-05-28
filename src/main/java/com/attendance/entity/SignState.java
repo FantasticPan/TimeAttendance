@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
+ * 签到状态表
  * Created by FantasticPan on 2018/3/27.
  */
 @Data

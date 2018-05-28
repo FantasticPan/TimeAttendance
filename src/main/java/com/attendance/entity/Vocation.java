@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
+ * 请假表
  * Created by FantasticPan on 2018/3/26.
  */
 @Getter
