@@ -44,6 +44,9 @@ public class VocationController {
         return "redirect:/personal_center";
     }
 
+    /**
+     * 员工接收邮件
+     */
     @ResponseBody
     @GetMapping("/vocations")
     public List<Vocation> vocationList() {
