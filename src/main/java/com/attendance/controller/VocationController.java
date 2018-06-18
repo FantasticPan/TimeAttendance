@@ -28,7 +28,7 @@ public class VocationController {
     private StaffRepository staffRepository;
 
     /**
-     * 员工接收请假回执
+     * 员工接收请假
      */
     @PostMapping("/vocation")
     public String leave(Vocation vocation_local) {
